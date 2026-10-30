@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lumen / Data Lab — Exploratory Data Analysis</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#top"><span class="brand-mark">L</span><span><b>LUMEN</b><small>DATA LAB</small></span></a>
+      <div class="side-label">WORKSPACE</div>
+      <a class="nav active" href="#overview"><span>◫</span> Overview</a>
+      <a class="nav" href="#visuals"><span>▥</span> Visualizations</a>
+      <a class="nav" href="#schema"><span>▤</span> Column profile</a>
+      <a class="nav" href="#preview"><span>▦</span> Data preview</a>
+      <div class="side-label second">QUICK NOTES</div>
+      <div class="side-note"><span class="note-dot green"></span><div><b>Explore</b><small>Understand the data</small></div></div>
+      <div class="side-note"><span class="note-dot cyan"></span><div><b>Validate</b><small>Check quality signals</small></div></div>
+      <div class="side-note"><span class="note-dot gold"></span><div><b>Prepare</b><small>Clean before modeling</small></div></div>
+      <div class="sidebar-bottom"><div class="avatar">PM</div><div><b>Pranathi M</b><small>AI &amp; ML TRACK · TASK 30</small></div></div>
+    </aside>
+
+    <main class="main" id="top">
+      <header class="topbar">
+        <div class="crumb">PROJECTS <span>/</span> EXPLORATORY DATA ANALYSIS</div>
+        <div class="top-right"><span class="live-dot"></span> LOCAL SESSION <span class="top-divider"></span><span class="date-tag">TASK 30</span></div>
+      </header>
+
+      <section class="intro" id="overview">
+        <div class="intro-copy">
+          <div class="eyebrow"><span class="eyebrow-line"></span> YOUR DATA, MADE CLEAR</div>
+          <h1>Find the signal<br><em>inside the data.</em></h1>
+          <p>A focused EDA workspace to inspect structure, uncover quality issues, compare distributions and turn raw rows into useful observations.</p>
+          <div class="intro-tags"><span>01 · STRUCTURE</span><span>02 · QUALITY</span><span>03 · PATTERNS</span></div>
+        </div>
+        <div class="orbit-art" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit-core"><span>EDA</span><small>INSIGHT<br>ENGINE</small></div><i class="orbit-point p1"></i><i class="orbit-point p2"></i><i class="orbit-point p3"></i></div>
+      </section>
+
+      <section class="control-row">
+        <div class="dataset-picker"><label for="datasetSelect">CURRENT DATASET</label><select id="datasetSelect"><option>Loading datasets…</option></select></div>
+        <div class="control-actions"><label class="upload-btn" for="csvUpload"><span>＋</span> Upload CSV</label><input type="file" id="csvUpload" accept=".csv,text/csv" hidden><button class="clean-btn" id="cleanBtn">✦ Clean &amp; export</button></div>
+      </section>
+      <div class="status-line" id="statusLine" aria-live="polite">Loading your workspace…</div>
+
+      <section class="metrics-grid" id="metrics">
+        <article class="metric-card"><div class="metric-top"><span>RECORDS</span><span class="metric-icon">↘</span></div><div class="metric-value" id="rowsValue">—</div><div class="metric-foot">Rows in selected dataset</div></article>
+        <article class="metric-card"><div class="metric-top"><span>FEATURES</span><span class="metric-icon">▦</span></div><div class="metric-value" id="colsValue">—</div><div class="metric-foot">Columns available to explore</div></article>
+        <article class="metric-card"><div class="metric-top"><span>MISSING CELLS</span><span class="metric-icon warning">◌</span></div><div class="metric-value" id="missingValue">—</div><div class="metric-foot" id="missingFoot">Data completeness check</div></article>
+        <article class="metric-card"><div class="metric-top"><span>DUPLICATE ROWS</span><span class="metric-icon">⧉</span></div><div class="metric-value" id="duplicateValue">—</div><div class="metric-foot">Exact repeated records</div></article>
+      </section>
+
+      <section class="section-head"><div><div class="eyebrow">READ THE DATA</div><h2>What stands out</h2></div><span class="section-caption">AUTO-GENERATED OBSERVATIONS · 5 NOTES</span></section>
+      <section class="observation-panel"><div class="obs-heading"><span class="spark">✳</span><div><b>Exploration notes</b><small>Evidence pulled from the selected CSV</small></div><span class="auto-pill">LIVE ANALYSIS</span></div><ol id="observations" class="observations"><li>Preparing observations…</li></ol></section>
+
+      <section class="section-head" id="visuals"><div><div class="eyebrow">VISUAL ANALYSIS</div><h2>Patterns at a glance</h2></div><span class="section-caption">4 VIEWS · MATPLOTLIB</span></section>
+      <section class="charts-grid">
+        <article class="chart-card"><div class="chart-title"><div><span class="chart-index">01</span><b>Numeric distribution</b></div><span>HISTOGRAM</span></div><img id="chartHist" alt="Numeric distribution chart"></article>
+        <article class="chart-card"><div class="chart-title"><div><span class="chart-index">02</span><b>Data completeness</b></div><span>MISSING VALUES</span></div><img id="chartMissing" alt="Missing values chart"></article>
+        <article class="chart-card"><div class="chart-title"><div><span class="chart-index">03</span><b>Category frequency</b></div><span>TOP VALUES</span></div><img id="chartCategory" alt="Category frequency chart"></article>
+        <article class="chart-card"><div class="chart-title"><div><span class="chart-index">04</span><b>Feature relationships</b></div><span>CORRELATION</span></div><img id="chartCorr" alt="Correlation chart"></article>
+      </section>
+
+      <section class="section-head" id="schema"><div><div class="eyebrow">DATA QUALITY</div><h2>Column profile</h2></div><span class="section-caption" id="schemaCaption">SCHEMA OVERVIEW</span></section>
+      <section class="table-card"><div class="table-head"><div><b>Field-by-field inspection</b><small>Data types, missing cells and unique values</small></div><span class="table-chip">SCHEMA</span></div><div class="table-scroll"><table><thead><tr><th>FIELD</th><th>DATA TYPE</th><th>MISSING</th><th>COMPLETENESS</th><th>UNIQUE</th></tr></thead><tbody id="schemaBody"><tr><td colspan="5">Loading schema…</td></tr></tbody></table></div></section>
+
+      <section class="section-head"><div><div class="eyebrow">SUMMARY STATISTICS</div><h2>Numeric snapshot</h2></div><span class="section-caption">MEAN · MEDIAN · RANGE</span></section>
+      <section class="table-card"><div class="table-head"><div><b>Descriptive statistics</b><small>Quick numerical summary of each numeric field</small></div><span class="table-chip">PANDAS</span></div><div class="table-scroll"><table><thead><tr><th>FIELD</th><th>COUNT</th><th>MEAN</th><th>STD DEV</th><th>MIN</th><th>MEDIAN</th><th>MAX</th></tr></thead><tbody id="statsBody"><tr><td colspan="7">Loading statistics…</td></tr></tbody></table></div></section>
+
+      <section class="section-head" id="preview"><div><div class="eyebrow">RAW RECORDS</div><h2>Data preview</h2></div><span class="section-caption">FIRST 10 ROWS</span></section>
+      <section class="table-card preview-card"><div class="table-head"><div><b>Sample records</b><small>Preview of the original dataset, before cleaning</small></div><span class="table-chip">CSV PREVIEW</span></div><div class="table-scroll"><table><thead id="previewHead"></thead><tbody id="previewBody"><tr><td>Loading preview…</td></tr></tbody></table></div></section>
+
+      <section class="bottom-grid">
+        <article class="clean-panel"><div class="bottom-eyebrow">NEXT STEP</div><h3>Prepare a cleaner<br>starting point.</h3><p>Remove exact duplicate rows, trim text values and fill missing data using the median or most common value. Your original CSV stays unchanged.</p><button id="cleanBtnBottom">Clean this dataset <span>↗</span></button><div id="cleanResult" class="clean-result"></div></article>
+        <article class="interview-panel"><div class="bottom-eyebrow">INTERVIEW READY</div><h3>Know the fundamentals.</h3><div class="qa"><b>What is EDA?</b><p>Exploratory Data Analysis is the process of summarizing and visualizing data to understand its structure, quality and patterns.</p></div><div class="qa"><b>Why before machine learning?</b><p>It helps identify missing values, unusual records, class imbalance and relationships before training a model.</p></div><div class="qa"><b>Common EDA steps?</b><p>Inspect shape and types, check missing values and duplicates, calculate statistics, visualize distributions and document findings.</p></div></article>
+      </section>
+      <footer><span>LUMEN / DATA LAB</span><span>BUILT FOR EXPLORATION · PYTHON + PANDAS + NUMPY + MATPLOTLIB</span></footer>
+    </main>
+  </div>
+  <script src="/static/app.js"></script>
+</body>
+</html>
